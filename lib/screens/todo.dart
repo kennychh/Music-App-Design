@@ -210,20 +210,16 @@ class TodoListState extends State<TodoList> with SingleTickerProviderStateMixin{
               SizedBox(height: 16.0),
               Container (
                 width: 370,
-//                decoration: new BoxDecoration(
-//                  borderRadius: BorderRadius.all(Radius.circular(15.0)),
-//                  boxShadow: [
-//                    new BoxShadow(
-//                      color: Colors.pink[100].withOpacity(0.8),
-//                      blurRadius: 15, // has the effect of softening the shadow
-//                      spreadRadius: -7, // has the effect of extending the shadow
-//                      offset: Offset(
-//                        0.0, // horizontal, move right 10
-//                        18.0, // vertical, move down 10
-//                      ),
-//                    )
-//                  ],
-//                ),
+                decoration: new BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Colors.pink[100].withOpacity(0.8),
+                       // vertical, move down 10
+                      ),
+                    )
+                  ],
+                ),
                 child: Stack(
                   children: <Widget>[
                     Center (
