@@ -18,6 +18,8 @@ environment:
 
 dependencies:
   palette_generator: ^0.1.1
+  spotify_playback: ^0.0.8
+  flute_music_player: ^0.0.6
   flutter:
     sdk: flutter
 

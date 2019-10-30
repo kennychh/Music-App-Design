@@ -16,6 +16,12 @@ class SpotifyState extends State<Spotify> {
   int _currentIndex = 0;
   String imgPath;
   ScrollController scrollController;
+  @override
+  void initState(){
+    super.initState();
+    scrollController = new ScrollController();
+  }
+
   var currentColor = Color.fromRGBO(231, 129, 109, 1.0);
   var cardsList = [
     CardInfo(
@@ -31,7 +37,7 @@ class SpotifyState extends State<Spotify> {
     CardInfo("Forever Young", AssetImage('assets/images/squareUp.jpg'),
         'assets/images/squareUpSD.jpg',false,['DDU-DU DDU-DU', 'Forever Young', 'Really', 'See U Later'], 'BLACKPINK',false),
     CardInfo("Kill This Love", AssetImage('assets/images/killThisLove.jpg'),
-        'assets/images/killThisLoveSD.jpg',false,['Kill This Love', 'Dont''t Know What To Do', 'Kick It', 'Hope Not'], 'BLACKPINK',false),
+        'assets/images/killThisLoveSD.jpg',false,['Kill This Love', 'Don\'t Know What To Do', 'Kick It', 'Hope Not'], 'BLACKPINK',false),
     CardInfo("Superhuman", AssetImage('assets/images/superHuman.jpg'),
         'assets/images/superHumanSD.jpg',false,['Superhuman'], 'NCT 127',false),
     CardInfo('', AssetImage('assets/images/white.png'),
@@ -39,7 +45,7 @@ class SpotifyState extends State<Spotify> {
   ];
   var heavyRotList = [
     CardInfo("K-pop", AssetImage('assets/images/kpop.jpg'), 'assets/images/kpopSD.jpg',false,[],'CREATED BY KENNY',true),
-    CardInfo("Flourishing", AssetImage('assets/images/chungha.jpg'), 'assets/images/chunghaSD.jpg',false,[],'CHUNG HA', false),
+    CardInfo("Flourishing", AssetImage('assets/images/chungha.jpg'), 'assets/images/chunghaSD.jpg',false,['Chica','Young In Love', 'Call It Love', 'Flourishing', 'Snapping'],'CHUNG HA', false),
     CardInfo("English", AssetImage('assets/images/english.png'), 'assets/images/englishSD.jpg',false,[],'CREATED BY KENNY',true),
     CardInfo('', AssetImage('assets/images/white.png'),
         'assets/images/white.png', true),
@@ -49,11 +55,6 @@ class SpotifyState extends State<Spotify> {
   ColorTween colorTween;
   CurvedAnimation curvedAnimation;
 
-  @override
-  void initState() {
-    super.initState();
-    scrollController = new ScrollController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +71,7 @@ class SpotifyState extends State<Spotify> {
                         right: 24,
                         top: 1
                     ),
-                    child: Image(
-                        image: AssetImage('assets/images/settings.png'),
-                        width: 24,
-                        color: Colors.grey),
+                    child: Icon(Icons.more_vert),
                   ),
                 ],
               ),
@@ -92,7 +90,7 @@ class SpotifyState extends State<Spotify> {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
-                          fontSize: 23),
+                          fontSize: 20),
                     ),
                   ),
                   SizedBox(
@@ -112,7 +110,7 @@ class SpotifyState extends State<Spotify> {
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
-                          fontSize: 23),
+                          fontSize: 20),
                     ),
                   ),
                   SizedBox(
@@ -128,24 +126,11 @@ class SpotifyState extends State<Spotify> {
                   new Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 23.5),
                     child: Text(
-                      'Your top podcasts',
+                      'Last added',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w700,
-                          fontSize: 23),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25.5,
-                  ),
-                  new Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 23.5),
-                    child: Text(
-                      'Made for you',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 23),
+                          fontSize: 20),
                     ),
                   ),
                 ],
@@ -160,6 +145,8 @@ class SpotifyState extends State<Spotify> {
         currentIndex: _currentIndex,
         selectedFontSize: 11,
         unselectedFontSize: 11,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
@@ -169,22 +156,17 @@ class SpotifyState extends State<Spotify> {
           BottomNavigationBarItem(
               icon: _currentIndex == 0
                   ? Image.asset('assets/images/home.png', scale: 3, color: Colors.greenAccent[400],): Image.asset('assets/images/home.png', scale: 3, color: Colors.grey,),
-              title: Text('Home', style: TextStyle(fontWeight: FontWeight.w600),)
+              title: Text('',)
           ),
           BottomNavigationBarItem(
               icon: _currentIndex == 1
-                  ? Image.asset('assets/images/compass.png', scale: 3, color: Colors.greenAccent[400],): Image.asset('assets/images/compass.png', scale: 3, color: Colors.grey,),
-              title: Text('Discover', style: TextStyle(fontWeight: FontWeight.w600))
+                  ? Image.asset('assets/images/search.png', scale: 4, color: Colors.greenAccent[400],): Image.asset('assets/images/search.png', scale: 4, color: Colors.grey,),
+              title: Text('',)
           ),
           BottomNavigationBarItem(
               icon: _currentIndex == 2
-                  ? Image.asset('assets/images/search.png', scale: 4, color: Colors.greenAccent[400],): Image.asset('assets/images/search.png', scale: 4, color: Colors.grey,),
-              title: Text('Search', style: TextStyle(fontWeight: FontWeight.w600))
-          ),
-          BottomNavigationBarItem(
-              icon: _currentIndex == 3
                   ? Image.asset('assets/images/book-open.png', scale: 3, color: Colors.greenAccent[400],): Image.asset('assets/images/book-open.png', scale: 3, color: Colors.grey,),
-              title: Text('Library', style: TextStyle(fontWeight: FontWeight.w600))
+              title: Text('',)
           ),
         ],
       ),
